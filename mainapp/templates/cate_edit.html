@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改类型</title>
+</head>
+<body>
+<h1>修改分类</h1>
+<form method="post" action="{{ url_for('news.getcate',id=cate.id) }}">
+标题:<input name="title" value="{{ cate.title }}">
+    <br>
+地址:<input name="url" value="{{ cate.origin_url }}">
+<br>
+    <button>提交</button>
+</form>
+
+</body>
+</html>

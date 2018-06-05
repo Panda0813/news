@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-theme.css">
+    <style>
+        th{
+            font-size: 16px;
+            text-align: center;
+        }
+
+        #operate{
+            width: 150px;
+        }
+        #operate a {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+{% from 'base.html' import listarctile %}
+{{ listarctile(articles,cateid) }}
+</body>
+</html>

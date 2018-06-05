@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑文章</title>
+    <style>
+        input{
+            margin-top: 15px;
+            font-size: 16px;
+            padding: 5px;
+        }
+        button{
+            margin-top: 20px;
+            width: 80px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+<h2>编辑文章</h2>
+<hr>
+{% if article %}
+<form method="post" action="{{ url_for('news.addarticle',cateid=cateid,articleid=article.id) }}">
+{% else %}
+<form method="post" action="{{ url_for('news.addarticle',cateid=cateid,articleid=0) }}">
+{% endif %}
+
+    <input name="title" placeholder="文章标题" value="{% if article %}
+    {{ article.title }}
+    {% endif %}" size="50">
+    <br>
+    <input name="content" placeholder="文章内容" value="{% if article %}
+    {{ article.content }}
+    {% endif %}" size="50">
+    <br>
+    <input name="origin" placeholder="文章来源" value="{% if article %}
+    {{ article.origin }}
+    {% endif %}" size="50">
+    <br>
+    <button>提交</button>
+</form>
+</body>
+</html>

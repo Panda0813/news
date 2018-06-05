@@ -1,0 +1,48 @@
+{% macro listcate(cates) %}
+<ul>
+{% for cate in cates %}
+<li><a href="/allarticle/{{ cate.id }}/"
+       target="catecontent" class="choose">{{ cate.title }}</a></li>
+
+{% endfor %}
+
+</ul>
+{% endmacro %}
+{% macro listarctile(articles,cateid) %}
+<table border="1" cellpadding="0" cellspacing="0" width="80%"
+       style="margin: 20px auto;line-height: 30px;text-align: center">
+<thead>
+<th>序号</th>
+<th>文章</th>
+<th>内容</th>
+<th>来源</th>
+<th>操作</th>
+</thead>
+<tbody>
+{% for article in articles %}
+<tr style="padding: 5px;
+background-color: {{ loop.cycle('gainsboro','') }};">
+<td>{{ loop.index }}</td>
+<td>{{ article.title }}</td>
+<td>{{ article.content }}</td>
+<td>{{ article.origin }}</td>
+<td id="operate">
+    <a class="btn btn-sm btn-success" href="/addarticle/{{ cateid }}/{{ article.id }}">修改</a>
+    <a class="btn btn-sm btn-warning" href="/delarticle/{{ cateid }}/{{ article.id }}">删除</a>
+</td>
+</tr>
+{% else %}
+    <tr>
+    <td colspan="5">暂无数据</td>
+    </tr>
+{% endfor %}
+</tbody>
+<tfoot>
+<tr>
+    <td colspan="5">
+        <a href="/addarticle/{{ cateid }}/0/">添加文章</a>
+    </td>
+</tr>
+</tfoot>
+</table>
+{% endmacro %}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>所有分类</title>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <style>
+        ul,li{
+            list-style: none;
+        }
+
+        ul {
+            height: 0;
+        }
+
+        li{
+{#            float: left;#}
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: lavender;
+            margin: 10px;
+            padding: 5px;
+            border-radius: 4px;
+            box-shadow: 2px 2px 3px grey;
+            cursor: pointer;
+        }
+
+        li:hover{
+            background-color: lightgrey;
+        }
+
+        iframe{
+            width: 100%;
+            height: 100%;
+        }
+
+        a{
+            color: blue;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        #left{
+            float: left;
+            width: 15%;
+            height: 300px;
+        }
+
+        #right{
+            float: left;
+            width: 78%;
+            height: 500px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<h2 align="center">头条新闻</h2>
+<div id="left">
+{% from 'base.html' import listcate %}
+{{ listcate(cates) }}
+</div>
+<div id="right">
+<iframe frameborder="0" scrolling="none" name="catecontent"
+         src=""></iframe>
+</div>
+</body>
+<script>
+    $(function () {
+        $('.choose').click(function () {
+            var bgc = $(this).parent();
+            console.log($(bgc));
+            $('.choose').parent().css('background-color','lavender');
+            $('.choose').css('color','blue');
+            $(bgc).css('background-color','#31b0d5');
+            $(this).css('color','white')
+        })
+    })
+</script>
+</html>
